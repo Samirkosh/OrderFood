@@ -14,3 +14,7 @@ body {
 li {
   list-style-type: none;
 }
+
+button {
+  cursor: pointer;
+}

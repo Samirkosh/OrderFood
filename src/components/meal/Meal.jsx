@@ -15,6 +15,7 @@ export const Meal = () => {
             description={item.description}
             title={item.title}
             price={item.price}
+            id={item.id}
           />
         ))}
       </ul>

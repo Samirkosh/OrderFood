@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MealItemForm } from "./MealItemForm";
 import styled from "styled-components";
+import { CartContext } from "../../context/cart-context";
 
-export const MealItem = ({ title, description, price }) => {
+export const MealItem = ({ title, description, price, id }) => {
+  const { addedMealHandler } = useContext(CartContext);
+  const addAmountHandler = (newAmount) => {
+    console.log(newAmount);
+
+    const newMeal = {
+      title,
+      price,
+      amount: +newAmount,
+      id,
+    };
+
+    addedMealHandler(newMeal);
+  };
+
   return (
     <Container>
       <StyledMealItem>
@@ -11,7 +26,7 @@ export const MealItem = ({ title, description, price }) => {
         <b>$ {price}</b>
       </StyledMealItem>
       <div>
-        <MealItemForm />
+        <MealItemForm onAdd={addAmountHandler} />
       </div>
     </Container>
   );

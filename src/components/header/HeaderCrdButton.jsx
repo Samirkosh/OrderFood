@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import basketImage from "../../assets/icons/Group.svg";
 import styled from "styled-components";
+import { OrderContext } from "../../context/ContextOrder";
+import { CartContext } from "../../context/cart-context";
 
 export const HeaderCrdButton = () => {
+  const context = useContext(OrderContext);
+
+  const { addedMeal } = useContext(CartContext);
+
+  const currentMealsCount = addedMeal.reduce((acc, meal) => {
+    return acc + meal.amount;
+  }, 0);
+
   return (
-    <StyledButton>
+    <StyledButton onClick={context.openModalHandler}>
       <img src={basketImage} alt="basketImage" />
       <span>Your cart</span>
-      <Badge>7</Badge>
+      <Badge>{currentMealsCount}</Badge>
     </StyledButton>
   );
 };

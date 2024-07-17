@@ -2,20 +2,25 @@ import styled from "styled-components";
 import { Header } from "./components/header/Header";
 import { Meal } from "./components/meal/Meal";
 import { MealsSummary } from "./components/mealsSummary/MealsSummary";
-import { OrderProvider } from "./context/ContextOrder";
+import { OrderContext } from "./context/ContextOrder";
 import { Cart } from "./components/cart/Cart";
+import { useContext } from "react";
 
 function App() {
+  const { isOpenModal, openModalHandler, closeModalHandler } =
+    useContext(OrderContext);
+
   return (
-    <OrderProvider>
+    <>
       <Header />
       <MealsSummary />
       <WrapperDiv>
-        <Meal />
-      </WrapperDiv>
 
-      <Cart />
-    </OrderProvider>
+        <Meal />
+        
+      </WrapperDiv>
+      {isOpenModal && <Cart />}
+    </>
   );
 }
 

@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { Button } from "../UI/Button";
 // import PlusIcon from "../../assets/icons/Plus.svg";
 
-export const CartItem = () => {
+export const CartItem = ({ title, price, amount }) => {
   return (
     <ListStyle>
       <StyledContainerName>
-        <h2>Barbecue Burger</h2>
+        <h2>{title}</h2>
         <WrapperPrice>
-          <b>$22.4 </b>
-          <span>x1</span>
+          <b>${price}</b>
+          <span>x{amount}</span>
         </WrapperPrice>
       </StyledContainerName>
       <WrapperButtons>

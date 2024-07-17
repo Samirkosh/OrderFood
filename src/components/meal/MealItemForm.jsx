@@ -9,6 +9,11 @@ export const MealItemForm = ({ inputId, onAdd }) => {
     setAmount(e.target.value);
   };
 
+  const addNewMeal = () => {
+    onAdd(amount);
+    setAmount(1);
+  };
+
   return (
     <Container>
       <InputBlock>
@@ -21,7 +26,7 @@ export const MealItemForm = ({ inputId, onAdd }) => {
           min={1}
         />
       </InputBlock>
-      <Button>
+      <Button onClick={addNewMeal}>
         <img src={PlusIcon} alt="" /> Add
       </Button>
     </Container>
